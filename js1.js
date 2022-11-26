@@ -6,6 +6,8 @@ var guess;
 var hits = 0;
 var guesses = 0;
 var isSunk = false;
+var shots = [];
+var shotsCheck = false;
 
 alert("Приветствуем Вас в игре 'Морской Бой'! Представьте поле из 7 клеток. В 3 из ниих нааходится корабль. Как быстро Вам удастся его потопить?");
 while (isSunk == false) {
@@ -13,7 +15,12 @@ while (isSunk == false) {
     if (guess < 0 || guess > 6) {
         alert("Не правильное значение. Введите число от 0 до 6");
     } else {
+        shotsCheck = shots.includes(guess);
+        if (shotsCheck == true) {
+            alert("Вы уже стреляли в эту клетку! Выберете другую.");
+        } else {
         guesses = guesses + 1;
+        shots.push(guess);
         if (guess == location1 || guess == location2 || guess == location3) {
             alert("ПОПАДАНИЕ!");
             hits = hits + 1;
@@ -24,6 +31,7 @@ while (isSunk == false) {
         } else {
             alert("МИМО!");
         }
+    }
     }
     }
     var stats = "Ваше колличество попыток - " + guesses +
