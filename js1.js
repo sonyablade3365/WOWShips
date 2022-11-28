@@ -11,6 +11,7 @@ var shotsCheck = false;
 
 alert("Приветствуем Вас в игре 'Морской Бой'! Представьте поле из 7 клеток. 3 клетки подряд занимает мой корабль. Как быстро Вам удастся его потопить?");
 while (isSunk == false) {
+       //ввод числа//
        guess = prompt("Введите число от 0 до 6:");
        //проверяем что ввели число//
        if (isNaN(guess)){ 
@@ -18,8 +19,9 @@ while (isSunk == false) {
        } else {
        //проверяем что ввели чило от 0 до 6// 
     if (guess < 0 || guess > 6) {
-        alert("Не правильное значение.");
+        alert("Не правильное значение.");    
     } else {
+        if (Number.isInteger(guess/ 1)) {
         //проверяем что в эту клетку еще не стреляли//
         shotsCheck = shots.includes(guess);
         if (shotsCheck == true) {
@@ -39,9 +41,14 @@ while (isSunk == false) {
             alert("МИМО!");
         }
     }
-    }
-    }
+} else {
+    alert  ("Нужно ввести целое число.");
+       }
 }
+       }
+    }
     var stats = "Ваше колличество попыток - " + guesses +
     ". Значит Ваша точность была " + ((3/guesses) * 100) + "%.";
    alert(stats);
+
+
